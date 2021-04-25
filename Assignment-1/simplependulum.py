@@ -14,7 +14,7 @@ T0 = 100         # Nm
 B = 5            # Nm/(rad/s)
 beta = 0,60482   # s^-1
 def T(t):
-    return 10
+    return 0
 
 # initial conditions
 x_0          = 0
