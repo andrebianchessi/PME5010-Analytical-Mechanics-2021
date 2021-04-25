@@ -12,12 +12,12 @@ K_3 =1000        # N/m^3
 C = 0.2          # N/(m/s)
 T0 = 100         # Nm
 B = 5            # Nm/(rad/s)
-beta = 0,60482   # s^-1
+beta = 0.60482   # s^-1
 def T(t):
-    return 0
+    return T0*math.tanh(beta*t)
 
 # initial conditions
-x_0          = 0
+x_0          = 0.12
 x_0_dot      = 0
 theta_0      = 0
 theta_0_dot  = 0
@@ -51,7 +51,7 @@ t = np.arange(ti, tf, h)
 # # integrador da funcao pendulo
 y = ode(dy, y_0, t, args=([C, K, K_3, m, B, mu, R, T],))
 
-initialConds = '\nx0='+str(x_0)+', v0='+str(x_0_dot)+', theta0='+str(theta_0)+', w0='+str(theta_0_dot)
+initialConds = '\nB='+str(B)+', x0='+str(x_0)+', v0='+str(x_0_dot)+', theta0='+str(theta_0)+', w0='+str(theta_0_dot)
 # graphs
 plt.figure(1)
 plt.plot(t, y[:,0])
