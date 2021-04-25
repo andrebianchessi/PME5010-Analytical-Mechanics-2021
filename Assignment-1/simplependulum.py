@@ -1,55 +1,82 @@
 from scipy.integrate import odeint as ode
 import matplotlib.pyplot as plt
 import numpy as np
+import math
 
-# parametros do sistema
-g = 9.8
-l = 1.0
-W = np.sqrt(g/l)
-z = 0.0
+# constants
+R = 0.25         # m
+m = 0.1          # kg
+mu = 0.096581    # kg/m
+K = 10           # N/m
+K_3 =1000        # N/m^3
+C = 0.2          # N/(m/s)
+T0 = 100         # Nm
+B = 5            # Nm/(rad/s)
+beta = 0,60482   # s^-1
 
-# condicoes iniciais
-theta0 = np.pi - 0.01
-thetadot0 = 0.0
-y0 = [theta0,thetadot0]
+# initial conditions
+x_0          = 0
+x_0_dot      = 0
+theta_0      = 0
+theta_0_dot  = 0
+y_0 = [x_0, x_0_dot, theta_0, theta_0_dot]
 
-# funcao pendulo
-def pendulo(y, t, par):
-  W = par[0]
-  z = par[1]
-  dy = [y[1], - W * W * np.sin(y[0]) - 2 * z * W * y[1]]
-  return dy
+def dy(y, t, par):
+    C = par[0]
+    K = par[1]
+    K_3 = par[2]
+    m = par[3]
+    B = par[4]
+    mu = par[5]
+    R = par[6]
 
-# parametros do tempo
+    x=y[0]
+    x_dot = y[1]
+    theta = y[2]
+    theta_dot = y[3]
+    x_dot_dot = -1*(C*x_dot + x*x*x*K_3+x*K-x*theta_dot*theta_dot*m)/m
+    theta_dot_dot = (-2*B*theta_dot-2*m*x*x_dot*theta_dot)/(m*x*x+mu*R*R*R*(math.pi+2/3))
+    return [x_dot, x_dot_dot, theta_dot, theta_dot]
+
+
+# time parameters
 ti = 0.0
 tf = 10.0
 h = 0.01
 t = np.arange(ti, tf, h)
 
-# integrador da funcao pendulo
-y = ode(pendulo, y0, t, args=([W, z],))
+# # integrador da funcao pendulo
+y = ode(dy, y_0, t, args=([C, K, K_3, m, B, mu, R],))
 
-# graficos
+# graphs
 plt.figure(1)
 plt.plot(t, y[:,0])
-plt.title("Serie temporal da posicao angular")
-plt.xlabel("tempo (s)")
-plt.ylabel("posicao angular (rad)")
+plt.title("Time series of x coordinate")
+plt.xlabel("time (s)")
+plt.ylabel("x (m)")
 plt.grid()
 plt.show()
 
 plt.figure(2)
 plt.plot(t, y[:,1])
-plt.title("Serie temporal da velocidade angular")
-plt.xlabel("tempo (s)")
-plt.ylabel("velocidade angular (rad/s)")
+plt.title("Time series of x speed")
+plt.xlabel("time (s)")
+plt.ylabel("dot(d) (m/s)")
 plt.grid()
 plt.show()
 
 plt.figure(3)
-plt.plot(y[:,0], y[:,1])
-plt.title("Espaco de fase")
-plt.xlabel("posicao angular (rad)")
-plt.ylabel("velocidade angular (rad/s)")
+plt.plot(t, y[:,2])
+plt.title("Time series of theta")
+plt.xlabel("time (s)")
+plt.ylabel("theta (rad)")
+plt.grid()
+plt.show()
+
+plt.figure(4)
+plt.plot(t, y[:,3])
+plt.title("Time series of angular speed")
+plt.xlabel("time (s)")
+plt.ylabel("dot(theta) (rad/s)")
 plt.grid()
 plt.show()
