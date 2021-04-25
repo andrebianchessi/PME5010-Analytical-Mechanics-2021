@@ -11,7 +11,7 @@ K = 10           # N/m
 K_3 =1000        # N/m^3
 C = 0.2          # N/(m/s)
 T0 = 100         # Nm
-B = 5            # Nm/(rad/s)
+B = 20            # Nm/(rad/s)
 beta = 0.60482   # s^-1
 def T(t):
     return T0*math.tanh(beta*t)
