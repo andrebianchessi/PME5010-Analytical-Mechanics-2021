@@ -13,6 +13,8 @@ C = 0.2          # N/(m/s)
 T0 = 100         # Nm
 B = 5            # Nm/(rad/s)
 beta = 0,60482   # s^-1
+def T(t):
+    return 10
 
 # initial conditions
 x_0          = 0
@@ -29,14 +31,15 @@ def dy(y, t, par):
     B = par[4]
     mu = par[5]
     R = par[6]
+    tau = par[7](t)
 
     x=y[0]
     x_dot = y[1]
     theta = y[2]
     theta_dot = y[3]
     x_dot_dot = -1*(C*x_dot + x*x*x*K_3+x*K-x*theta_dot*theta_dot*m)/m
-    theta_dot_dot = (-2*B*theta_dot-2*m*x*x_dot*theta_dot)/(m*x*x+mu*R*R*R*(math.pi+2/3))
-    return [x_dot, x_dot_dot, theta_dot, theta_dot]
+    theta_dot_dot = (tau -2*B*theta_dot-2*m*x*x_dot*theta_dot)/(m*x*x+mu*R*R*R*(math.pi+2/3))
+    return [x_dot, x_dot_dot, theta_dot, theta_dot_dot]
 
 
 # time parameters
@@ -46,7 +49,7 @@ h = 0.01
 t = np.arange(ti, tf, h)
 
 # # integrador da funcao pendulo
-y = ode(dy, y_0, t, args=([C, K, K_3, m, B, mu, R],))
+y = ode(dy, y_0, t, args=([C, K, K_3, m, B, mu, R, T],))
 
 # graphs
 plt.figure(1)
