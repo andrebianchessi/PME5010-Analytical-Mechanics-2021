@@ -44,6 +44,34 @@ plt.figure(1)
 plt.plot(t, y[:,0])
 plt.title("Time series of theta coordinate"+initialConds)
 plt.xlabel("time (s)")
-plt.ylabel("x (m)")
+plt.ylabel("theta (rad)")
+plt.grid()
+plt.show()
+
+def phiDot(theta):
+    return (alpha-math.cos(theta)*beta)/(I*math.sin(theta)*math.sin(theta))
+def psiDot(theta):
+    phiD = phiDot(alpha)
+    return (beta-J*phiD*math.cos(theta))/J
+
+phiDotList = []
+psiDotList = []
+for i in y[:,0]:
+    phiDotList.append(phiDot(i))
+    psiDotList.append(psiDot(i))
+
+plt.figure(2)
+plt.plot(t, phiDotList)
+plt.title("Time series of phiDot coordinate"+initialConds)
+plt.xlabel("time (s)")
+plt.ylabel("phiDot (rad/s)")
+plt.grid()
+plt.show()
+
+plt.figure(3)
+plt.plot(t, psiDotList)
+plt.title("Time series of psiDot coordinate"+initialConds)
+plt.xlabel("time (s)")
+plt.ylabel("psiDot (rad/s)")
 plt.grid()
 plt.show()
