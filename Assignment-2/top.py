@@ -5,10 +5,10 @@ import math
 
 # constants
 mgzg = 0.2           # Nm
-ZG = 1               # m
+ZG = 10               # m
 I = 1                # kgm^2
 J = 2*I
-thetaBar = math.pi/6 # rad   
+thetaBar = math.pi/4 # rad   
 
 # initial conditions
 theta0 = thetaBar
@@ -21,7 +21,7 @@ y_0 = [theta0, thetaDot0, phi0, psi0]
 
 # constants of motion
 beta = J*(phiDot0*math.cos(theta0)+psiDot0)
-alpha = I*math.sin(theta0)*math.sin(theta0)*beta
+alpha = I*math.sin(theta0)*math.sin(theta0)*phiDot0 + math.cos(theta0)*beta
 
 def PhiDot(theta):
     return (alpha-math.cos(theta)*beta)/(I*math.sin(theta)*math.sin(theta))
@@ -45,7 +45,7 @@ def dy(y, t, par):
 
 # time parameters
 ti = 0.0
-tf = 5.0
+tf = 20.0
 h = 0.01
 t = np.arange(ti, tf, h)
 
