@@ -38,7 +38,7 @@ t = np.arange(ti, tf, h)
 
 y = ode(dy, y_0, t, args=([],))
 
-initialConds = '\ntheta0='+str(round(theta0,2)) + ', thetaDot0='+str(thetaDot0)
+initialConds = '\ntheta0='+str(round(theta0,2)) + ', thetaDot0='+str(thetaDot0) + ', phiDot0='+str(phiDot0)+', psiDot0='+str(psiDot0)
 # graphs
 plt.figure(1)
 plt.plot(t, y[:,0])
