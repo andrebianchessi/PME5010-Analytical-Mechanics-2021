@@ -3,12 +3,17 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
+# time parameters
+ti = 0.0
+tf = 80.0
+h = 0.1
+
 # constants
 mgzg = 0.2           # Nm
 ZG = 10               # m
 I = 1                # kgm^2
 J = 2*I
-thetaBar = math.pi/4 # rad   
+thetaBar = math.pi/6 # rad   
 
 # initial conditions
 theta0 = thetaBar
@@ -43,12 +48,8 @@ def dy(y, t, par):
     return [thetaDot, thetaDotDot, phiDot, psiDot]
 
 
-# time parameters
-ti = 0.0
-tf = 20.0
-h = 0.01
-t = np.arange(ti, tf, h)
 
+t = np.arange(ti, tf, h)
 y = ode(dy, y_0, t, args=([],))
 
 initialConds = '\ntheta0='+str(round(theta0,2)) + ', thetaDot0='+str(thetaDot0) + ', phiDot0='+str(phiDot0)+', psiDot0='+str(psiDot0)
@@ -120,4 +121,7 @@ for i in range(len(y[:,0])):
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.scatter(np.array(xg),np.array(yg),np.array(zg))
+ax.set_yscale('linear')
+ax.set_xscale('linear')
+ax.set_zscale('linear')
 plt.show()
