@@ -33,7 +33,8 @@ def main(simulationCase):
         theta0 = math.pi/4
         psiDot0 = 0.5
     if (simulationCase == 5):
-        theta0 = 0.00001
+        theta0 = math.pi/4
+        psiDot0 = 0.3
 
     y_0 = [theta0, thetaDot0, phi0, psi0]
     # constants of motion
@@ -177,3 +178,4 @@ main(1)
 main(2)
 main(3)
 main(4)
+main(5)
