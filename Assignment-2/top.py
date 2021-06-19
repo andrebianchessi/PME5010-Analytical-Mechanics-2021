@@ -32,6 +32,8 @@ def main(simulationCase):
     if (simulationCase == 4):
         theta0 = math.pi/4
         psiDot0 = 0.5
+    if (simulationCase == 5):
+        theta0 = 0.00001
 
     y_0 = [theta0, thetaDot0, phi0, psi0]
     # constants of motion
@@ -45,8 +47,8 @@ def main(simulationCase):
     def PhiDot(theta):
         return (alpha-math.cos(theta)*beta)/(I*math.sin(theta)*math.sin(theta))
     def PsiDot(theta):
-        phiD = PhiDot(alpha)
-        return (beta-J*phiD*math.cos(theta))/J
+        phiD = PhiDot(theta)
+        return beta/J-phiD*math.cos(theta)
 
     def dy(y, t, par):
         theta = y[0]
@@ -60,7 +62,6 @@ def main(simulationCase):
         return [thetaDot, thetaDotDot, phiDot, psiDot]
 
 
-
     t = np.arange(ti, tf, h)
     y = ode(dy, y_0, t, args=([],))
 
@@ -69,13 +70,13 @@ def main(simulationCase):
     for i in y[:,0]:
         phiDotList.append(PhiDot(i))
         psiDotList.append(PsiDot(i))
+
     def Xg(theta, phi):
         return ZG*math.sin(theta)*math.cos(phi)
     def Yg(theta, phi):
         return ZG*math.sin(theta)*math.sin(phi)
     def Zg(theta, phi):
         return ZG*math.cos(theta)
-
     xg = []
     yg = []
     zg = []
@@ -173,6 +174,7 @@ def main(simulationCase):
     plt.savefig('case'+str(simulationCase)+'G_3d.png')\
 
 main(1)
-main(2)
-main(3)
-main(4)
+# main(2)
+# main(3)
+# main(4)
+#main(5)
