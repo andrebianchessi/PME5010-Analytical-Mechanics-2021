@@ -97,7 +97,7 @@ def main(simulationCase):
     plt.ylabel("theta (rad)")
     plt.grid()
     # plt.show()
-    plt.savefig('case'+str(simulationCase)+'theta.png')
+    plt.savefig('plots/case'+str(simulationCase)+'theta.png')
 
     plt.figure()
     plt.plot(t, y[:,1])
@@ -106,7 +106,7 @@ def main(simulationCase):
     plt.ylabel("thetaDot (rad/s)")
     plt.grid()
     # plt.show()
-    plt.savefig('case'+str(simulationCase)+'thetaDot.png')
+    plt.savefig('plots/case'+str(simulationCase)+'thetaDot.png')
 
 
     plt.figure()
@@ -115,7 +115,7 @@ def main(simulationCase):
     plt.xlabel("time (s)")
     plt.ylabel("phi (rad)")
     plt.grid()
-    plt.savefig('case'+str(simulationCase)+'phi.png')
+    plt.savefig('plots/case'+str(simulationCase)+'phi.png')
 
     plt.figure()
     plt.plot(t, phiDotList)
@@ -123,7 +123,7 @@ def main(simulationCase):
     plt.xlabel("time (s)")
     plt.ylabel("phiDot (rad/s)")
     plt.grid()
-    plt.savefig('case'+str(simulationCase)+'phiDot.png')
+    plt.savefig('plots/case'+str(simulationCase)+'phiDot.png')
 
     plt.figure()
     plt.plot(t, y[:,3])
@@ -131,7 +131,7 @@ def main(simulationCase):
     plt.xlabel("time (s)")
     plt.ylabel("psi (rad)")
     plt.grid()
-    plt.savefig('case'+str(simulationCase)+'psi.png')
+    plt.savefig('plots/case'+str(simulationCase)+'psi.png')
 
     plt.figure()
     plt.plot(t, psiDotList)
@@ -139,7 +139,7 @@ def main(simulationCase):
     plt.xlabel("time (s)")
     plt.ylabel("psiDot (rad/s)")
     plt.grid()
-    plt.savefig('case'+str(simulationCase)+'psiDot.png')
+    plt.savefig('plots/case'+str(simulationCase)+'psiDot.png')
 
     plt.figure()
     plt.plot(t, xg)
@@ -147,7 +147,7 @@ def main(simulationCase):
     plt.xlabel("time (s)")
     plt.ylabel("XG (m)")
     plt.grid()
-    plt.savefig('case'+str(simulationCase)+'XG.png')
+    plt.savefig('plots/case'+str(simulationCase)+'XG.png')
 
     plt.figure()
     plt.plot(t, yg)
@@ -155,7 +155,7 @@ def main(simulationCase):
     plt.xlabel("time (s)")
     plt.ylabel("YG (m)")
     plt.grid()
-    plt.savefig('case'+str(simulationCase)+'YG.png')
+    plt.savefig('plots/case'+str(simulationCase)+'YG.png')
 
     plt.figure()
     plt.plot(t, zg)
@@ -163,7 +163,7 @@ def main(simulationCase):
     plt.xlabel("time (s)")
     plt.ylabel("ZG (m)")
     plt.grid()
-    plt.savefig('case'+str(simulationCase)+'ZG.png')
+    plt.savefig('plots/case'+str(simulationCase)+'ZG.png')
 
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d', title = "Time series of center of mass "+initialConds)
@@ -171,7 +171,7 @@ def main(simulationCase):
     ax.set_yscale('linear')
     ax.set_xscale('linear')
     ax.set_zscale('linear')
-    plt.savefig('case'+str(simulationCase)+'G_3d.png')\
+    plt.savefig('plots/case'+str(simulationCase)+'G_3d.png')\
 
 main(1)
 main(2)
