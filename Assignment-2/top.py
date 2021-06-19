@@ -174,7 +174,6 @@ def main(simulationCase):
     plt.savefig('case'+str(simulationCase)+'G_3d.png')\
 
 main(1)
-# main(2)
-# main(3)
-# main(4)
-#main(5)
+main(2)
+main(3)
+main(4)
