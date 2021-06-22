@@ -6,11 +6,11 @@ import math
 def main(simulationCase):
     # time parameters
     ti = 0.0
-    tf = 60
+    tf = 20
     h = 0.05
 
     # constants
-    K = 1
+    K = 3
     m = 0.2
     a = 1
     l = 0.8
@@ -64,7 +64,7 @@ def main(simulationCase):
     plt.xlabel("time (s)")
     plt.ylabel("x (m)")
     plt.grid()
-    plt.savefig('plots/case'+str(simulationCase)+'x.png')
+    plt.savefig('plots/ex2Case'+str(simulationCase)+'x.png')
 
     plt.figure()
     plt.plot(t, Y[:,1])
@@ -72,7 +72,7 @@ def main(simulationCase):
     plt.xlabel("time (s)")
     plt.ylabel("xDot (m/s)")
     plt.grid()
-    plt.savefig('plots/case'+str(simulationCase)+'xDot.png')
+    plt.savefig('plots/ex2Case'+str(simulationCase)+'xDot.png')
 
     plt.figure()
     plt.plot(t, Y[:,2])
@@ -80,7 +80,7 @@ def main(simulationCase):
     plt.xlabel("time (s)")
     plt.ylabel("y (m)")
     plt.grid()
-    plt.savefig('plots/case'+str(simulationCase)+'y.png')
+    plt.savefig('plots/ex2Case'+str(simulationCase)+'y.png')
 
     plt.figure()
     plt.plot(t, Y[:,3])
@@ -88,7 +88,7 @@ def main(simulationCase):
     plt.xlabel("time (s)")
     plt.ylabel("yDot (m/s)")
     plt.grid()
-    plt.savefig('plots/case'+str(simulationCase)+'yDot.png')
+    plt.savefig('plots/ex2Case'+str(simulationCase)+'yDot.png')
 
     plt.figure()
     plt.plot(Y[:,0], Y[:,2])
@@ -96,7 +96,7 @@ def main(simulationCase):
     plt.xlabel("x (m)")
     plt.ylabel("y (m)")
     plt.grid()
-    plt.savefig('plots/case'+str(simulationCase)+'xy.png')
+    plt.savefig('plots/ex2Case'+str(simulationCase)+'xy.png')
 
 
 
