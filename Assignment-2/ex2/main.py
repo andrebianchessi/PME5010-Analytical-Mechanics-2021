@@ -23,7 +23,17 @@ def main(simulationCase):
     yDot0 = 0
 
     if (simulationCase == 2):
+        x0 = 0
         y0 = 0.1
+
+    if (simulationCase == 3):
+        x0 = 0.1
+        y0 = 0.1
+
+    if (simulationCase == 4):
+        x0 = 0.1
+        y0 = 0.1
+        l = 1.5
 
     y_0 = [x0, xDot0, y0, yDot0]
 
@@ -102,3 +112,5 @@ def main(simulationCase):
 
 main(1)
 main(2)
+main(3)
+main(4)
