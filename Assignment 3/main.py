@@ -20,10 +20,13 @@ def main(case):
         x_0 = 2
 
     if case == 4:
-        x_0 = 1.5
         b1 = -1
 
     if case == 5:
+        x_0 = 1.5
+        b1 = -1
+
+    if case == 6:
         x_0 = 2
         b1 = -1
 
@@ -62,3 +65,8 @@ def main(case):
 
 
 main(1)
+main(2)
+main(3)
+main(4)
+main(5)
+main(6)
