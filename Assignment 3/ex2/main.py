@@ -21,15 +21,14 @@ def main(case):
         x_0 = x_0 + 2*x_0Increment
 
     if case == 4:
-        x_0 = -x_0
         b1 = - 1
 
     if case == 5:
-        x_0 = -x_0 - x_0Increment
+        x_0 = x_0 + x_0Increment
         b1 = - 1
 
     if case == 6:
-        x_0 = -x_0 -2*x_0Increment
+        x_0 = x_0 + 2*x_0Increment
         b1 = -1
 
 
