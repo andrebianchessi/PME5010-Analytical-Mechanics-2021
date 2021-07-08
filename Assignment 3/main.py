@@ -10,24 +10,26 @@ def main(case):
     b3 = 1
 
     # initial conditions
-    x_0          = 1
+    x_0          = 2
     x_0_dot      = 0
 
+    x_0Increment = 1
     if case == 2:
-        x_0 = 1.5
+        x_0 = x_0 + x_0Increment
 
     if case == 3:
-        x_0 = 2
+        x_0 = x_0 + 2*x_0Increment
 
     if case == 4:
-        b1 = -1
+        x_0 = -x_0
+        b1 = - 1
 
     if case == 5:
-        x_0 = 1.5
-        b1 = -1
+        x_0 = -x_0 - x_0Increment
+        b1 = - 1
 
     if case == 6:
-        x_0 = 2
+        x_0 = -x_0 -2*x_0Increment
         b1 = -1
 
 
@@ -48,14 +50,14 @@ def main(case):
 
     # time parameters
     ti = 0.0
-    tf = 5
+    tf = 10
     h = 0.01
     t = np.arange(ti, tf, h)
 
     y = ode(dy, y_0, t, args=([],))
 
     # graphs
-    plt.figure(1)
+    plt.figure()
     plt.plot(y[:,0], y[:,1])
     plt.title("Phase space x\n"+ "E="+str(E) +", beta1="+str(b1) +", beta3="+str(b3))
     plt.xlabel("x")
