@@ -31,7 +31,7 @@ def main(case):
         x_0 = x_0 + 2*x_0Increment
         b1 = -b1
 
-
+    print('x0: '+str(x_0))
     E = 1/2*x_0_dot*x_0_dot + 1/2*b1*x_0*x_0 + 1/4*b3*x_0*x_0*x_0*x_0
 
     def xDotDot(x):
