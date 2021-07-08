@@ -6,12 +6,12 @@ import math
 def main(case):
 
     # constants
-    b1 = 1
+    b1 = 10
     b3 = 1
 
     # initial conditions
-    x_0          = 2
-    x_0_dot      = 0
+    x_0          = 5
+    x_0_dot      = 2
 
     x_0Increment = 1
     if case == 2:
@@ -21,15 +21,15 @@ def main(case):
         x_0 = x_0 + 2*x_0Increment
 
     if case == 4:
-        b1 = - 1
+        b1 = - b1
 
     if case == 5:
         x_0 = x_0 + x_0Increment
-        b1 = - 1
+        b1 = - b1
 
     if case == 6:
         x_0 = x_0 + 2*x_0Increment
-        b1 = -1
+        b1 = -b1
 
 
     E = 1/2*x_0_dot*x_0_dot + 1/2*b1*x_0*x_0 + 1/4*b3*x_0*x_0*x_0*x_0
