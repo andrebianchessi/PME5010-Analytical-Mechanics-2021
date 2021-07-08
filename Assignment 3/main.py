@@ -63,7 +63,7 @@ def main(case):
     plt.xlabel("x")
     plt.ylabel("xDot")
     plt.grid()
-    plt.savefig("plots/case"+str(case)+".png")
+    plt.savefig("plots/ex2Case"+str(case)+".png")
 
 
 main(1)
