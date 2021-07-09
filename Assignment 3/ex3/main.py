@@ -6,7 +6,7 @@ import math
 def main(case):
     # time parameters
     ti = 0.0
-    tf = 15
+    tf = 100
 
     # constants
     l = 10
@@ -92,7 +92,7 @@ def main(case):
     ax.set_yscale('linear')
     ax.set_xscale('linear')
     ax.set_zscale('linear')
-    plt.savefig('plots/case'+str(case)+'_3d.png')\
+    plt.savefig('plots/ex3Case'+str(case)+'_3d.png')\
 
 
 
