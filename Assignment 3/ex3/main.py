@@ -4,6 +4,9 @@ import numpy as np
 import math
 
 def main(case):
+    # time parameters
+    ti = 0.0
+    tf = 15
 
     # constants
     l = 10
@@ -38,10 +41,7 @@ def main(case):
         phiDot = y[3]
         return [thetaDot, ThetaDotDot(theta, phiDot), phiDot, PhiDotDot(theta, thetaDot, phiDot)]
 
-
-    # time parameters
-    ti = 0.0
-    tf = 15
+    # time step
     h = 0.01
     t = np.arange(ti, tf, h)
 
