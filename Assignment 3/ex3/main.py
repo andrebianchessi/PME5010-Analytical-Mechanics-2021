@@ -87,7 +87,7 @@ def main(case):
         Z.append(Zf(theta,phi))
 
     fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d', title = "3D plot of motion\n"+initConds)
+    ax = fig.add_subplot(111, projection='3d', title = "3D Plot of Motion\n"+initConds)
     ax.plot(np.array(X),np.array(Y),np.array(Z))
     ax.set_yscale('linear')
     ax.set_xscale('linear')
