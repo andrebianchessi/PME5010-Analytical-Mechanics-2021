@@ -10,7 +10,6 @@ def main(case):
 
     # constants
     l = 10
-    m = 1
     g = 9.8
 
     # initial conditions
