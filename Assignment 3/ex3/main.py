@@ -11,13 +11,13 @@ def main(case):
     g = 9.8
 
     # initial conditions
-    theta0 = math.pi/6
+    theta0 = math.pi/12
     thetaDot0 = 0
     phi0 = 0
     phiDot0 = 0
 
     if case == 2:
-        phiDot0 = 1
+        phiDot0 = 0.1
 
     def ThetaDotDot(theta, phiDot):
         sTheta = math.sin(theta)
@@ -41,7 +41,7 @@ def main(case):
 
     # time parameters
     ti = 0.0
-    tf = 10
+    tf = 15
     h = 0.01
     t = np.arange(ti, tf, h)
 
@@ -50,7 +50,7 @@ def main(case):
     initConds = "theta0=" + str(round(theta0/math.pi,2)) + "*pi, thetaDot0="+str(thetaDot0) + ", phiDot0="+str(phiDot0)
     # graphs
     plt.figure()
-    plt.scatter(y[:,0], y[:,1])
+    plt.plot(y[:,0], y[:,1])
     plt.title("Phase space\n"+initConds)
     plt.xlabel("theta")
     plt.ylabel("thetaDot")
@@ -58,20 +58,42 @@ def main(case):
     plt.savefig("plots/ex3ThetaCase"+str(case)+".png")
 
     plt.figure()
-    plt.scatter(y[:,2], y[:,3])
+    if (phiDot0 != 0):
+        plt.plot(y[:,2], y[:,3])
+    else:
+        plt.scatter(y[:,2], y[:,3])
     plt.title("Phase space\n"+initConds)
     plt.xlabel("phi")
     plt.ylabel("phiDot")
     plt.grid()
     plt.savefig("plots/ex3PhiCase"+str(case)+".png")
 
-    # fig = plt.figure()
-    # ax = fig.add_subplot(111, projection='3d', title = "Time series of center of mass "+initialConds)
-    # ax.plot(np.array(xg),np.array(yg),np.array(zg))
-    # ax.set_yscale('linear')
-    # ax.set_xscale('linear')
-    # ax.set_zscale('linear')
-    # plt.savefig('plots/case'+str(simulationCase)+'G_3d.png')\
+    # Plot x,y,z
+
+    def Xf(theta, phi):
+        return l*math.sin(theta)*math.sin(phi)
+    def Yf(theta, phi):
+        return l*math.sin(theta)*math.cos(phi)
+    def Zf(theta, phi):
+        return -l*math.cos(theta)
+    X = []
+    Y = []
+    Z = []
+
+    for i in range(len(y[:,0])):
+        theta = y[i,0]
+        phi = y[i,2]
+        X.append(Xf(theta,phi))
+        Y.append(Yf(theta,phi))
+        Z.append(Zf(theta,phi))
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d', title = "Time series of center of mass\n"+initConds)
+    ax.plot(np.array(X),np.array(Y),np.array(Z))
+    ax.set_yscale('linear')
+    ax.set_xscale('linear')
+    ax.set_zscale('linear')
+    plt.savefig('plots/case'+str(case)+'_3d.png')\
 
 
 
