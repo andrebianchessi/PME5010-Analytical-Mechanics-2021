@@ -43,13 +43,13 @@ def main(case):
 
     def XDotDot(x, xDot, y, yDot,z, zDot):
         b = B(xDot,yDot,zDot)
-        return x*(b-g*z/(l*l))
+        return x*(b+g*z/(l*l))
     def YDotDot(x, xDot, y, yDot,z, zDot):
         b = B(xDot,yDot,zDot)
-        return y*(b-g*z/(l*l))
+        return y*(b+g*z/(l*l))
     def ZDotDot(x, xDot, y, yDot,z, zDot):
         b = B(xDot,yDot,zDot)
-        return (g*(x*x+y*y)+b*z)/(l*l)
+        return (-g*(x*x+y*y)+b*z)/(l*l)
 
     def Xf(theta, phi):
         return l*math.sin(theta)*math.sin(phi)
@@ -114,7 +114,7 @@ def main(case):
 
     plt.figure()
     if (phiDot0 != 0):
-        plt.plot(uSpherical[:,2], u[:,3])
+        plt.plot(uSpherical[:,2], uSpherical[:,3])
     else:
         plt.scatter(uSpherical[:,2], uSpherical[:,3])
     plt.title("Phase space\n"+initConds)
@@ -138,13 +138,14 @@ def main(case):
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d', title = "3D Plot of Motion\n"+initConds)
     ax.plot(np.array(X),np.array(Y),np.array(Z))
-    ax.plot(uCartesian[:,0],uCartesian[:,2], uCartesian[:,4])
+    #ax.plot(uCartesian[:,0],uCartesian[:,2], uCartesian[:,4])
     ax.set_yscale('linear')
     ax.set_xscale('linear')
     ax.set_zscale('linear')
     plt.savefig('plots/ex3Case'+str(case)+'_3d.png')
+    plt.show()
 
 
 
 
-main(1)
+main(2)
